@@ -1,0 +1,46 @@
+WAP to translate a rectangle.
+
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+#include<math.h>
+
+void translate( );
+
+void main( )
+{
+int ch;
+int gd=DETECT,gm;
+initgraph(&gd,&gm,"..//bgi");
+
+setcolor(4);
+rectangle(100,150,150,100);
+
+translate( );
+getch( );
+closegraph( );
+}
+
+void translate( )
+{
+int tx,ty;
+printf("enter tx & ty : ");
+scanf("%d%d",&tx,&ty);
+rectangle(100,150,150,100);
+printf("after translation");
+rectangle(100+tx,150+ty,150+tx,100+ty);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
