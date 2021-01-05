@@ -1,0 +1,44 @@
+#include<graphics.h>
+#include<stdlib.h>
+#include<stdio.h>
+#include<conio.h>
+int main(void)
+{
+int gdriver=DETECT,gmode;
+int x1,y1,x2,y2,xtrans,ytrans,mult;
+int i,j,k,a[2][3],t[3][3],b[2][3];
+printf("enter the initial coordinates of line : ");
+scanf("%d%d",&x1,&y1);
+printf("enter final coordinates of line : ");
+scanf("%d%d",&x2,&y2);
+initgraph(&gdriver,&gmode,"..\\bgi");
+setcolor(BLUE);
+line(getmaxx()/2+x1,getmaxy()/2-y1,getmaxx()/2+x2,getmaxy()/2-y2);
+a[0][0]=x1;    a[0][2]=1;      a[1][1]=y2;
+a[0][1]=y1;    a[1][0]=x2;     a[1][2]=1;
+printf("how much you want to translate along x direction : ");
+scanf("%d",&xtrans);
+printf("how much you want to translate along y direction : ");
+scanf("%d",&ytrans);
+setcolor(RED);
+t[0][0]=1;    t[0][1]=0;     t[0][2]=0;
+t[1][0]=0;    t[1][1]=1;     t[1][2]=0;
+t[2][0]=xtrans;   t[2][1]=ytrans;
+t[2][2]=1;
+for(i=0;i<=1;i++)
+for(j=0;j<=2;j++)
+{
+mult=0;
+for(k=0;k<=2;k++)
+{
+mult=mult+a[i][k]*t[k][j];
+}
+b[i][j]=mult;
+}
+x1=b[0][0];   y1=b[0][1];     x2=b[1][0];
+y2=b[1][1];
+line(getmaxx()/2+x1,getmaxy()/2-y1,getmaxx()/2+x2,getmaxy()/2-y2);
+getch( );
+closegraph( );
+return(0);
+}
